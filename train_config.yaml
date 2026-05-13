@@ -1,0 +1,56 @@
+# FaceMask Detection System v2.0 — Training Configuration
+# Override any value via CLI: python src/train.py --epochs 50
+
+dataset_path:    dataset
+model_save_path: models/facemask_model.h5
+log_dir:         logs/training
+
+input_size:   [224, 224]
+num_classes:  3
+classes:
+  - with_mask
+  - without_mask
+  - mask_weared_incorrect
+
+training:
+  epochs:                  30
+  batch_size:              32
+  learning_rate:           0.0001
+  fine_tune_learning_rate: 0.00001
+  validation_split:        0.20
+  fine_tune_at:            100     # unfreeze MobileNetV2 layers from this index
+  fine_tune_epochs:        10
+
+augmentation:
+  rotation_range:      20
+  zoom_range:          0.15
+  width_shift_range:   0.20
+  height_shift_range:  0.20
+  shear_range:         0.15
+  horizontal_flip:     true
+  brightness_range:    [0.8, 1.2]
+  fill_mode:           nearest
+
+model:
+  base:           MobileNetV2
+  weights:        imagenet
+  include_top:    false
+  dropout_1:      0.50
+  dropout_2:      0.30
+  dense_units_1:  128
+  dense_units_2:  64
+
+callbacks:
+  early_stopping_patience: 7
+  reduce_lr_patience:      4
+  reduce_lr_factor:        0.2
+  reduce_lr_min:           0.0000001
+
+alerts:
+  sound:      true
+  screenshot: true
+  log:
+    csv:  logs/detections.csv
+    json: logs/alerts.json
+  cooldown_seconds: 3.0
+  webhook: ""

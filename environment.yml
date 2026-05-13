@@ -1,0 +1,24 @@
+name: facemask
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.9
+  - pip
+  - numpy=1.23
+  - opencv=4.7
+  - matplotlib=3.6
+  - seaborn=0.12
+  - pandas=1.5
+  - pyyaml=6.0
+  - tqdm=4.64
+  - scikit-learn=1.1
+
+  - pip:
+    - tensorflow>=2.10.0
+    - flask>=2.2.0
+    - flask-cors>=3.0.10
+    - Pillow>=9.3.0
+    - imageio>=2.22.0
+    - colorama>=0.4.6

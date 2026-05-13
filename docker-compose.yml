@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  facemask:
+    build: .
+    image: facemask-detector:2.0
+    container_name: facemask-detector
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./logs:/app/logs
+      - ./models:/app/models
+      - ./dataset:/app/dataset
+    devices:
+      - /dev/video0:/dev/video0    # webcam passthrough
+    environment:
+      - CAMERA_INDEX=0
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

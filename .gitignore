@@ -1,0 +1,65 @@
+# FaceMask Detection System — .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.conda/
+
+# Model weights (too large for git — use Git LFS or releases)
+models/*.h5
+models/*.pb
+models/*.tflite
+models/*.ckpt*
+models/variables/
+!models/face_detector.prototxt
+!models/.gitkeep
+
+# Dataset (too large for git)
+dataset/with_mask/
+dataset/without_mask/
+dataset/mask_weared_incorrect/
+downloads/
+!dataset/.gitkeep
+
+# Logs (auto-generated)
+logs/*.csv
+logs/*.json
+logs/screenshots/
+logs/training/
+!logs/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets
+.env
+*.key
+kaggle.json
+
+# TensorBoard
+events.out.tfevents.*
