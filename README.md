@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/banner.svg" alt="FaceMask Detection Banner" width="100%"/>
+<img src="banner.svg" alt="FaceMask Detection Banner" width="100%"/>
 
 # 🛡️ FaceMask Detection System
 ### *Real-Time AI-Powered Mask Compliance Monitoring*
